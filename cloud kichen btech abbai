@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cloud Kitchen</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #ff6f61, #ff9966);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background: #333;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+      transition: background 0.3s, transform 0.2s;
+    }
+    nav a:hover {
+      background: #ff6f61;
+      transform: scale(1.05);
+    }
+    .hero {
+      position: relative;
+      background: url('https://source.unsplash.com/1600x600/?food,kitchen') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .hero span {
+      position: relative;
+      z-index: 1;
+    }
+    .content {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .menu-highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cloud Kitchen</h1>
+    <p>Delicious food, delivered from the cloud</p>
+  </header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Menu</a>
+    <a href="#">Order</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="hero">
+    <span>Fresh. Fast. Flavorful.</span>
+  </div>
+
+  <div class="content">
+    <h2>Welcome to Cloud Kitchen</h2>
+    <p>We bring gourmet meals straight to your doorstep. No storefront, no fuss—just high-quality food prepared by top chefs in our state-of-the-art cloud kitchen.</p>
+    <p>Explore our menu, place your order, and enjoy restaurant-quality meals from the comfort of your home.</p>
+
+    <div class="menu-highlights">
+      <div class="card">
+        <h3>🍔 Burgers</h3>
+        <p>Juicy, flavorful, and made with the freshest ingredients.</p>
+      </div>
+      <div class="card">
+        <h3>🍕 Pizzas</h3>
+        <p>Wood-fired perfection with a variety of toppings.</p>
+      </div>
+      <div class="card">
+        <h3>🥗 Salads</h3>
+        <p>Healthy, fresh, and packed with nutrients.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Cloud Kitchen. All rights reserved.
+  </div>
+
+  <script>
+    // Scroll animation for cards
+    const cards = document.querySelectorAll('.card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
